@@ -17,6 +17,9 @@ const result = spawnSync(
   inNix ? args : ['--yes', `--package=${packageManager}`, 'pnpm', ...args],
   {
     stdio: 'inherit',
+    // Nix or npx already selects pnpm. Do not let pnpm bootstrap itself again
+    // and require a separate packageManagerDependencies section in the lockfile.
+    env: { ...process.env, pnpm_config_pm_on_fail: 'ignore' },
   },
 );
 
