@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { PreferencesProvider } from '@/apps/shell/preferences';
 import { Shell } from '@/apps/shell/shell';
 import { DraftProvider } from '@/apps/simulator/draft-provider';
@@ -19,6 +20,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Shell>{children}</Shell>
           </DraftProvider>
         </PreferencesProvider>
+        <SpeedInsights />
       </body>
     </html>
   );
