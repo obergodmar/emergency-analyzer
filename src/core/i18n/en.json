@@ -1,0 +1,153 @@
+{
+  "menu": {
+    "description": {
+      "start": "Simulation result",
+      "settings": "Set up simulation",
+      "references": "How-to use the app",
+      "reports": "Past starts"
+    },
+    "start": "Simulation",
+    "settings": "Settings",
+    "references": "How-to",
+    "reports": "Reports"
+  },
+  "start": {
+    "title": "Simulation start",
+    "simulation": "Simulation",
+    "info": {
+      "deaths": "Deaths: {{deaths}}",
+      "victim": "Victims: {{victim}}",
+      "time": "Time: {{time}}"
+    },
+    "notification": {
+      "text": "The simulation shows the approximate damage and the area of impact. Many factors are not taken into account.",
+      "status": "The scale of the disaster was unimaginable. Approximate global damage is displayed. In the selected region",
+      "victim": "Affected: {{victimOnRegion}}",
+      "deaths": "Died: {{deathsOnRegion}}"
+    }
+  },
+  "footer": {
+    "language": "Language",
+    "local": "Locally",
+    "languages": {
+      "ru": "Russian",
+      "en": "English"
+    },
+    "about": {
+      "title": "About app",
+      "description": "The application is a model for predicting catastrophes with visualization on a map. Emergency Analyzer is designed to construct a simulation of an emergency situation with a projection of the covered area of the designated location.",
+      "version": "Version"
+    }
+  },
+  "log": {
+    "title": "Events",
+    "type1": "Earthquake",
+    "type2": "Something 1",
+    "type3": "Something 2",
+    "type4": "Something 3",
+    "type5": "Something 4"
+  },
+  "reports": {
+    "empty": "Empty",
+    "result": {
+      "virus": "Virus",
+      "virusProps": "Virus Properties",
+      "virusMeasure": "T: {{inc}}, R: {{cont}}",
+      "title": "Simulation Result",
+      "disaster": "Disaster",
+      "deaths": "Deaths",
+      "victims": "Victims",
+      "date": "Simulation Date",
+      "start": "Start"
+    }
+  },
+  "settings": {
+    "title": "Setting up a simulation",
+    "submit": {
+      "title": "Apply",
+      "description": "Apply settings for simulation"
+    },
+    "virus": {
+      "placeholder": "Type name of the virus",
+      "incubate": "Incubation period",
+      "cont": "Contagiousness"
+    },
+    "disaster": {
+      "name": {
+        "value": "Type of disaster",
+        "description": "Choose type of disaster"
+      },
+      "power": {
+        "value": "Power",
+        "description": "Choose power of disaster",
+        "low": "Low level",
+        "severe": "Severe level",
+        "devastating": "Devastating level"
+      },
+      "duration": {
+        "value": "Duration",
+        "description": "Choose duration of disaster",
+        "gradually": "Gradually",
+        "middle": "Middle",
+        "instantly": "Instantly"
+      },
+      "scale": {
+        "value": "Scale",
+        "description": "Choose scale of disaster",
+        "small": "Small",
+        "middle": "Middle",
+        "giant": "Giant"
+      },
+      "country": {
+        "value": "Country",
+        "description": "Choose country of disaster"
+      },
+      "region": {
+        "value": "Region",
+        "description": "Choose region of disaster"
+      },
+      "Virus": {
+        "value": "Virus class",
+        "description": "Choose virus class"
+      },
+      "Atomic bomb": {
+        "value": "Atomic bomb type",
+        "description": "Choose atomic bomb type",
+        "measure": "{{charge}} Mt"
+      },
+      "Asteroid": {
+        "value": "Space object type",
+        "description": "Choose space object type",
+        "spaceObject": {
+          "Comet": {
+            "value": "Comete type",
+            "description": "Choose comet type"
+          },
+          "Asteroid": {
+            "value": "Asteroid type",
+            "description": "Choose asteroid type"
+          },
+          "material": {
+            "value": "Material",
+            "description": "Choose material type"
+          }
+        }
+      },
+      "symptoms": "Symptoms",
+      "selectAllSymptoms": "Select all",
+      "further": "Read further"
+    },
+    "search": "Type here..."
+  },
+  "toast": {
+    "server": "Server: ",
+    "proxy": "Proxy: ",
+    "status": {
+      "connected": "connected",
+      "disconnected": "disconnected"
+    }
+  },
+  "feature": {
+    "inWork": "In Work"
+  }
+}

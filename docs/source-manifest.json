@@ -1,0 +1,5 @@
+{
+  "../backend/DB.sql": "1ab524fa870d0e3aefb8b09aae958dc327bdf8b83547060d6f9afdf959f4c42e",
+  "../backend/src/main/java/com/emergencyAnalyzer/model/simulation/Damage.java": "935df10b394e8f2bb28c71fd9d1bb11744176de0b0bb607ebbb1ec52fdd96311",
+  "../frontend/src/components/world-map/countries.js": "e09faa8fca9956c204f9f435195c3dc757cc4d8f6190f3bb8ffbaa6c942f45cc"
+}

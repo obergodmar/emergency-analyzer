@@ -1,0 +1,18 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "singleQuote": true,
+  "tabWidth": 2,
+  "ignorePatterns": [
+    "pnpm-lock.yaml",
+    "devenv.lock",
+    "next-env.d.ts",
+    "public/**",
+    "screenshots/**",
+    ".next/**",
+    "src/core/map/countries.json",
+    "src/core/catalog/historical.json",
+    "src/core/catalog/events.json",
+    "src/core/simulation/chemical-tables.json",
+    "src/core/icons/legacy.json"
+  ]
+}

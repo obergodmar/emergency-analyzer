@@ -1,0 +1,7 @@
+# Original interface icons
+
+SVG geometry from react-icons 3.11.0, the version used by the Gatsby frontend. Stored locally to keep the original drawings while using modern React and TypeScript. `components/ui/icons.tsx` renders typed SVG components; no legacy runtime dependency is shipped.
+
+Included sets and upstream licenses: [Ant Design (MIT)](https://github.com/ant-design/ant-design-icons/blob/master/LICENSE), [Bootstrap (MIT)](https://github.com/twbs/icons/blob/main/LICENSE), [css.gg (MIT)](https://github.com/astrit/css.gg/blob/master/LICENSE), [Boxicons (MIT)](https://github.com/atisawd/boxicons/blob/master/LICENSE), [VS Code Codicons (CC BY 4.0)](https://github.com/microsoft/vscode-codicons/blob/main/LICENSE), [Font Awesome (CC BY 4.0)](https://fontawesome.com/license/free), [Game Icons (CC BY 3.0, authors Lorc, Delapouite and contributors)](https://game-icons.net/about.html), [Material Design (Apache 2.0)](https://github.com/google/material-design-icons/blob/master/LICENSE), [Remix Icon (Apache 2.0 in the source release)](https://github.com/Remix-Design/RemixIcon), [Simple Icons (CC0)](https://github.com/simple-icons/simple-icons/blob/develop/LICENSE.md), [Typicons (CC BY-SA 3.0)](https://github.com/stephenhutchings/typicons.font/blob/master/src/svg/LICENSE).
+
+See `react-icons.LICENSE` for the icon wrapper distribution license. Removal of application authorship does not remove third-party licenses.

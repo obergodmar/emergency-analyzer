@@ -1,0 +1,552 @@
+[
+  {
+    "id": 55,
+    "log1_en": "Joint development of a vaccine has begun",
+    "log2_en": "Joined the development of a vaccine",
+    "log3_en": "A vaccine is being developed, but it will take a long time",
+    "disaster": 10,
+    "log1_ru": "Началась совместная разработка вакцины",
+    "log2_ru": "Подключилась к разработки вакцины",
+    "log3_ru": "Вакцина разрабатывается, но на это потребуется много времени"
+  },
+  {
+    "id": 12,
+    "log1_en": "Several people were injured during the earthquake",
+    "log2_en": "There are victims of the disaster",
+    "log3_en": "The damage will be calculated",
+    "disaster": 3,
+    "log1_ru": "Несколько людей получили травмы во время землетрясения",
+    "log2_ru": "Есть пострадавшие от катастрофы",
+    "log3_ru": "Предстоит подсчёт ущерба"
+  },
+  {
+    "id": 7,
+    "log1_en": "They didn't share a piece of land?",
+    "log2_en": "Human greed can put an end to mankind",
+    "log3_en": "The remaining countries are beginning to take a stand in this confrontation",
+    "disaster": 1,
+    "log1_ru": "Они не поделили клочек земли?",
+    "log2_ru": "Человеческая жадность может положить конец человечеству",
+    "log3_ru": "Оставшиеся страны начинают занимать позицию в этом противостоянии"
+  },
+  {
+    "id": 25,
+    "log1_en": "Condemned the actions of countries",
+    "log2_en": "War!",
+    "log3_en": "A devastating nuclear bomb attack was carried out on the territory of",
+    "disaster": 9,
+    "log1_ru": "Осудила действия стран",
+    "log2_ru": "Война!",
+    "log3_ru": "Разрушительный удар ядерной бомбой был нанесен по территории"
+  },
+  {
+    "id": 42,
+    "log1_en": "Unknown disease massively infected people around the world",
+    "log2_en": "The epicenter of a rapidly spreading disease has been recorded  ",
+    "log3_en": "People are massively ill with an unknown disease",
+    "disaster": 10,
+    "log1_ru": "Неизвестной болезнью массово заражаются люди по всему миру",
+    "log2_ru": "Зафикисирован эпицентр стремтиельно распространяющейся болезни  ",
+    "log3_ru": "Люди массово заболевают неизвестной болезнью"
+  },
+  {
+    "id": 33,
+    "log1_en": "Closed border",
+    "log2_en": "People were put on full self-isolation",
+    "log3_en": "Serious restrictive measures have been introduced",
+    "disaster": 6,
+    "log1_ru": "Закрыла границы",
+    "log2_ru": "Людей посадили на полную самоизоляцию",
+    "log3_ru": "Введены серьезные ограничительные меры"
+  },
+  {
+    "id": 11,
+    "log1_en": "The disease was defeated",
+    "log2_en": "The vaccine was invented. It works!",
+    "log3_en": "The disease is defeated",
+    "disaster": 2,
+    "log1_ru": "Болезнь была побеждена",
+    "log2_ru": "Вакцина была изобретена. Она работает!",
+    "log3_ru": "Побеждена болезнь"
+  },
+  {
+    "id": 10,
+    "log1_en": "In international waters was sunk by a civilian airliner \"Freedom\"",
+    "log2_en": "Shall convene an extraordinary meeting of the United Nations to discuss the situation",
+    "log3_en": "The UN meeting ended with sabotage by one of the parties to the conflict",
+    "disaster": 1,
+    "log1_ru": "В нейтральных водах был потоплен гражданский лайнер \"Свобода\"",
+    "log2_ru": "Созывает внеочередное заседание ООН для обсуждения ситуации",
+    "log3_ru": "Заседание ООН закончилось саботажем одной из сторон конфликта"
+  },
+  {
+    "id": 48,
+    "log1_en": "The Prime Minister has resigned",
+    "log2_en": "The current President was re-elected for a new term",
+    "log3_en": "Supported Russia's foreign policy",
+    "disaster": 2,
+    "log1_ru": "Премьер-министр подал в отставку",
+    "log2_ru": "Действующий президент переизбран на новый срок",
+    "log3_ru": "Поддержала внешнюю политику России"
+  },
+  {
+    "id": 45,
+    "log1_en": "Refused to negotiate with terrorists",
+    "log2_en": "Is this the last day for humanity?",
+    "log3_en": "An atomic bomb exploded in the center",
+    "disaster": 5,
+    "log1_ru": "Отказалась вести переговоры с террористами ",
+    "log2_ru": "Это последний день для человечества?",
+    "log3_ru": "Атомная бомба взорвалась в центре"
+  },
+  {
+    "id": 28,
+    "log1_en": "The authorities have mobilized troops",
+    "log2_en": "Conducted nuclear tests",
+    "log3_en": "A nuclear missile was fired at the territory",
+    "disaster": 9,
+    "log1_ru": "Власти провели мобилизацию войск",
+    "log2_ru": "Провела ядерные испытания",
+    "log3_ru": "По территории была выпущена ядерная ракета"
+  },
+  {
+    "id": 56,
+    "log1_en": "The strongest tsunami in the last century",
+    "log2_en": "The strongest tsunami hit ",
+    "log3_en": "Affected by the tsunami",
+    "disaster": 11,
+    "log1_ru": "Сильнейшее цунами за последнее век",
+    "log2_ru": "Обрушилось сильнейшее цунами ",
+    "log3_ru": "Пострадала от цунами"
+  },
+  {
+    "id": 38,
+    "log1_en": "The failure of the peace talks",
+    "log2_en": "War was declared, and the use of nuclear weapons was inevitable. All residents urgently need to go to the nearest nuclear shelter!",
+    "log3_en": "A nuclear strike was carried out",
+    "disaster": 5,
+    "log1_ru": "Провал мирных переговоров",
+    "log2_ru": "Была объявлена война, неизбежно применение ядерного оружия. Всем жителям срочно необходимо пройти в ближайшее ядерное убежище!",
+    "log3_ru": "Ядерный удар был нанесен"
+  },
+  {
+    "id": 46,
+    "log1_en": "Scientists gave the name of an unknown disease",
+    "log2_en": "In the network, an unknown disease was nicknamed \" Perdition\"",
+    "log3_en": "Doctors gave the name of the disease \" Bard-20\"",
+    "disaster": 10,
+    "log1_ru": "Ученые дали название неизвестной болезни",
+    "log2_ru": "В сети неизвестную болезнь прозвали \"Погибель\"",
+    "log3_ru": "Медики дали название болезни \"Bard-20\""
+  },
+  {
+    "id": 31,
+    "log1_en": "Hundreds of people are under the rubble",
+    "log2_en": "There are dead",
+    "log3_en": "There is an analysis of the rubble in search of survivors",
+    "disaster": 8,
+    "log1_ru": "Сотни людей находятся под завалами",
+    "log2_ru": "Есть погибшие",
+    "log3_ru": "Идёт разбор завалов в поисках уцелевших"
+  },
+  {
+    "id": 41,
+    "log1_en": "The situation in the world is heating up",
+    "log2_en": "On the verge of a nuclear war?",
+    "log3_en": "Negotiations are currently underway",
+    "disaster": 5,
+    "log1_ru": "Обстановка в мире накаляется",
+    "log2_ru": "На пороге ядерной войны?",
+    "log3_ru": "В данный момент идут переговор"
+  },
+  {
+    "id": 52,
+    "log1_en": "Will a new disease put an end to humanity?",
+    "log2_en": "The new disease was fatal. Dead {{}} people",
+    "log3_en": "Mortality from the disease is increasing",
+    "disaster": 10,
+    "log1_ru": "Новая болезнь положет конец человечеству?",
+    "log2_ru": "Новая болезнь оказалась смертельной. Погибших {{}} человек",
+    "log3_ru": "Смертность от болезни растет"
+  },
+  {
+    "id": 19,
+    "log1_en": "Last night the country's Ambassador was killed during a visit to the President's personal residence",
+    "log2_en": "Considers this incident a Declaration of war",
+    "log3_en": "Calls for a peaceful settlement of the conflict",
+    "disaster": 9,
+    "log1_ru": "Вчера вечером был убит посол страны во время визита в личную резиденцию президента",
+    "log2_ru": "Считает данное происшествие объявлением войны",
+    "log3_ru": "Призывает к мирному урегулированию конфликта"
+  },
+  {
+    "id": 57,
+    "log1_en": "Infected already {{}}",
+    "log2_en": "The number of infected exceeded {{}}",
+    "log3_en": "The Ministry of health provided statistics on infected people: {{}}",
+    "disaster": 2,
+    "log1_ru": "Заразилось уже {{}}",
+    "log2_ru": "Количество зараженных превысило {{}}",
+    "log3_ru": "Министерство здравоохранения представила статистику зараженных: {{}}"
+  },
+  {
+    "id": 14,
+    "log1_en": "Recorded inflation",
+    "log2_en": "C there was a mass murder",
+    "log3_en": "The President has resigned",
+    "disaster": 6,
+    "log1_ru": "Зафиксирована инфляция",
+    "log2_ru": "В произошло массовое убийство",
+    "log3_ru": "Президент подал в отставку"
+  },
+  {
+    "id": 20,
+    "log1_en": "Scientists gave the name of an unknown disease: \"Tetra-301\"",
+    "log2_en": "In the network, an unknown disease was nicknamed \" Black death\"",
+    "log3_en": "Doctors gave the name of the disease \" Sodar-21\"",
+    "disaster": 6,
+    "log1_ru": "Ученные дали название неизвестной болезни: \"Tetra-301\"",
+    "log2_ru": "В сети неизвестную болезнь прозвали \"Черная смерть\"",
+    "log3_ru": "Медики дали название болезни \"Sodar-21\""
+  },
+  {
+    "id": 23,
+    "log1_en": "The Ministry of health provided statistics on infected people: {{}}",
+    "log2_en": "The number of infected exceeded {{}}",
+    "log3_en": "The rate of infection is frightening. Got sick already {{}}",
+    "disaster": 6,
+    "log1_ru": "Министерство здравоохранения представила статистику зараженных: {{}}",
+    "log2_ru": "Количество зараженных превысило {{}}",
+    "log3_ru": "Темпы заражения пугают. Заболело уже {{}}"
+  },
+  {
+    "id": 15,
+    "log1_en": "The opposition won the presidential election",
+    "log2_en": "The current President was re-elected for a new term",
+    "log3_en": "We accepted the offer of the EU Ambassador on trade cooperation",
+    "disaster": 4,
+    "log1_ru": "Оппозиция победила на президентских выборах",
+    "log2_ru": "Действующий президент переизбран на новый срок",
+    "log3_ru": "Приняли предложение посла Евросоюза о торговом сотрудничестве"
+  },
+  {
+    "id": 13,
+    "log1_en": "Increases the pressure",
+    "log2_en": "Humanity has come to an end, a nuclear war has begun",
+    "log3_en": "A nuclear explosion destroys everything. A few managed to escape",
+    "disaster": 1,
+    "log1_ru": "Усиливает свое давление",
+    "log2_ru": "Человечеству настал конец, началась ядерная война",
+    "log3_ru": "Ядерная взрыв уничтожает всё. Немногим удалось укрыться"
+  },
+  {
+    "id": 32,
+    "log1_en": "High inflation is recorded",
+    "log2_en": "The law on the prohibition of media interference in government policy was adopted",
+    "log3_en": "The President has resigned",
+    "disaster": 5,
+    "log1_ru": "Зафиксирована большая инфляция",
+    "log2_ru": "Принят закон о запрещении СМИ вмешательства в политику властей",
+    "log3_ru": "Президент подал в отставку"
+  },
+  {
+    "id": 49,
+    "log1_en": "The number of infected exceeded {{}}",
+    "log2_en": "Is it worth raising a panic? {{}} People have already been infected",
+    "log3_en": "A new Spaniard? Number of infected: {{}}",
+    "disaster": 10,
+    "log1_ru": "Количество зараженных превысило {{}}",
+    "log2_ru": "Стоит ли поднимать панику? Заразилось уже {{}} человек",
+    "log3_ru": "Новая испанка? Количество зараженных: {{}}"
+  },
+  {
+    "id": 24,
+    "log1_en": "High inflation is recorded",
+    "log2_en": "The law on the prohibition of media interference in government policy was adopted",
+    "log3_en": "The President has resigned",
+    "disaster": 8,
+    "log1_ru": "Зафиксирована большая инфляция",
+    "log2_ru": "Принят закон о запрещении СМИ вмешательства в политику властей",
+    "log3_ru": "Президент подал в отставку"
+  },
+  {
+    "id": 37,
+    "log1_en": "There was a heavy flood",
+    "log2_en": "The water level rose by 2 meters",
+    "log3_en": "Affected by the Typhoon",
+    "disaster": 7,
+    "log1_ru": "Произошло сильное наводнение",
+    "log2_ru": "Уровень воды поднялся на 2 метра",
+    "log3_ru": "Пострадала от тайфуна"
+  },
+  {
+    "id": 36,
+    "log1_en": "The disease was defeated",
+    "log2_en": "The vaccine was invented. It works!",
+    "log3_en": "The disease is defeated",
+    "disaster": 6,
+    "log1_ru": "Болезнь была побеждена",
+    "log2_ru": "Вакцина была изобретена. Она работает!",
+    "log3_ru": "Побеждена болезнь"
+  },
+  {
+    "id": 40,
+    "log1_en": "Hundreds of people are missing",
+    "log2_en": "There are dead",
+    "log3_en": "In search of survivors",
+    "disaster": 7,
+    "log1_ru": "Сотни людей считаются пропавшими без вести",
+    "log2_ru": "Есть погибшие",
+    "log3_ru": "Идёт поисках уцелевших"
+  },
+  {
+    "id": 3,
+    "log1_en": "The disease was defeated",
+    "log2_en": "The vaccine is complete. But the damage from the disease is catastrophic",
+    "log3_en": "The disease is defeated",
+    "disaster": 10,
+    "log1_ru": "Болезнь была побеждена",
+    "log2_ru": "Вакцина завершена. Но ущерб от болезни катастрофичен",
+    "log3_ru": "Побеждена болезнь"
+  },
+  {
+    "id": 2,
+    "log1_en": "The disease has already killed {{}}",
+    "log2_en": "Is the new disease fatal?",
+    "log3_en": "A new Spaniard? First deaths from the disease",
+    "disaster": 2,
+    "log1_ru": "От болезни погибло уже {{}}",
+    "log2_ru": "Новая болезнь смертельна?",
+    "log3_ru": "Новая испанка? Первые погибшие от болезни"
+  },
+  {
+    "id": 34,
+    "log1_en": "The authorities accused the opposition of links with foreign intelligence",
+    "log2_en": "The authorities announced the beginning of an economic crisis",
+    "log3_en": "The government has criticized Russia's foreign policy",
+    "disaster": 7,
+    "log1_ru": "Власти обвинили оппозицию в связях с внешней разведкой",
+    "log2_ru": "Власти объявили о начале экономического кризиса",
+    "log3_ru": "Правительство раскритиковало внешнюю политику России"
+  },
+  {
+    "id": 1,
+    "log1_en": "Opposition leaders arrested",
+    "log2_en": "The government has proposed closing borders to American citizens",
+    "log3_en": "The authorities reshuffled the government",
+    "disaster": 1,
+    "log1_ru": "Арестована оппозиционная верхушка",
+    "log2_ru": "Правительство редложило закрыть границы для американских граждан",
+    "log3_ru": "Власти провели перестановки в правительстве"
+  },
+  {
+    "id": 5,
+    "log1_en": "Began the development of a vaccine",
+    "log2_en": "Scientists have started developing a vaccine",
+    "log3_en": "The vaccine is being developed at a rapid pace",
+    "disaster": 2,
+    "log1_ru": "Началась разработка вакцины",
+    "log2_ru": "Ученые начали разработку вакцины",
+    "log3_ru": "Вакцина разрабатывается стремительными темпами"
+  },
+  {
+    "id": 4,
+    "log1_en": "The ruling party won the parliamentary elections",
+    "log2_en": "The current President was re-elected for a new term",
+    "log3_en": "We signed an agreement on expanding military cooperation",
+    "disaster": 1,
+    "log1_ru": "Правящая партия победила на парламентских выборах",
+    "log2_ru": "Действующий президент переизбран на новый срок",
+    "log3_ru": "Заключили соглашение о расширении военного сотрудничества"
+  },
+  {
+    "id": 54,
+    "log1_en": "Scientists gave the name of an unknown disease: \"Tetra-301\"",
+    "log2_en": "In the network, an unknown disease was nicknamed \" Ubitsa\"",
+    "log3_en": "Doctors gave the name of the disease \" Nodad-21\"",
+    "disaster": 2,
+    "log1_ru": "Ученные дали название неизвестной болезни: \"Tetra-301\"",
+    "log2_ru": "В сети неизвестную болезнь прозвали \"Убица\"",
+    "log3_ru": "Медики дали название болезни \"Nodad-21\""
+  },
+  {
+    "id": 17,
+    "log1_en": "Recorded an outbreak of an unknown disease",
+    "log2_en": "People get sick with an unknown disease",
+    "log3_en": "An outbreak of an unknown disease has been recorded",
+    "disaster": 6,
+    "log1_ru": "Зафиксировали вспышку неизвестного заболевания",
+    "log2_ru": "Люди заболевают пока не известной болезнью",
+    "log3_ru": "Зафиксирована вспышка неизвестного заболевания"
+  },
+  {
+    "id": 26,
+    "log1_en": "The number of infected people is growing. The mortality rate is also!",
+    "log2_en": "{{}} People died from the disease",
+    "log3_en": "Statistics are scary! Number of deaths from the disease {{}}",
+    "disaster": 6,
+    "log1_ru": "Количество зараженных растёт. Смертность тоже!",
+    "log2_ru": "От болезни погибло {{}} человек",
+    "log3_ru": "Статистика пугает! Количество умерших от болезни {{}}"
+  },
+  {
+    "id": 44,
+    "log1_en": "The authorities reshuffled the government",
+    "log2_en": "The authorities announced the beginning of an economic crisis",
+    "log3_en": "The government has proposed closing borders for Russian citizens",
+    "disaster": 12,
+    "log1_ru": "Власти провели перестановки в правительстве",
+    "log2_ru": "Власти объявили о начале экономического кризиса",
+    "log3_ru": "Правительство предложило закрыть границы для российских граждан"
+  },
+  {
+    "id": 53,
+    "log1_en": "Recorded inflation",
+    "log2_en": "The President has resigned",
+    "log3_en": "Construction of the largest oil pipeline has been completed",
+    "disaster": 11,
+    "log1_ru": "Зафиксирована инфляция",
+    "log2_ru": "Президент подал в отставку",
+    "log3_ru": "Завершилось строительство крупнейшего нефтепровода"
+  },
+  {
+    "id": 30,
+    "log1_en": "Began the development of a vaccine",
+    "log2_en": "Doctors have started developing a vaccine",
+    "log3_en": "A vaccine is being developed, but it will take time",
+    "disaster": 6,
+    "log1_ru": "Началась разработка вакцины",
+    "log2_ru": "Медики начали разработку вакцины",
+    "log3_ru": "Вакцина разрабатывается, но на это потребуется время"
+  },
+  {
+    "id": 22,
+    "log1_en": "Conducted a special operation to eliminate a high-ranking General",
+    "log2_en": "Recalled its Ambassador and announced the mobilization",
+    "log3_en": "Ignores all persuasions to sit down at the negotiating table.",
+    "disaster": 9,
+    "log1_ru": "Провела спецоперацию по ликвидации высокопоставленного генерала",
+    "log2_ru": "Отозвала послов и объявила мобилизацию",
+    "log3_ru": "Игнорирует все уговоры сесть за стол переговоров."
+  },
+  {
+    "id": 6,
+    "log1_en": "Opposition leaders arrested",
+    "log2_en": "Proposed to close the borders to us citizens",
+    "log3_en": "The authorities reshuffled the government",
+    "disaster": 3,
+    "log1_ru": "Арестована оппозиционная верхушка",
+    "log2_ru": "Предложили закрыть границы для американских граждан",
+    "log3_ru": "Власти провели перестановки в правительстве"
+  },
+  {
+    "id": 39,
+    "log1_en": "High inflation is recorded",
+    "log2_en": "There was a terrorist attack in the center of a large city",
+    "log3_en": "The current President was re-elected for a new term",
+    "disaster": 10,
+    "log1_ru": "Зафиксирована большая инфляция",
+    "log2_ru": "Произошёл теракт в центре крупного города",
+    "log3_ru": "Действующий президент переизбран на новый срок"
+  },
+  {
+    "id": 27,
+    "log1_en": "There was a strong earthquake",
+    "log2_en": "There was a strong earthquake with a power of 8 points",
+    "log3_en": "Suffered from a strong earthquake",
+    "disaster": 8,
+    "log1_ru": "Произошло сильное землетрясение",
+    "log2_ru": "Произошло сильное землетрясение мощностью 8 баллов",
+    "log3_ru": "Пострадала от сильного землетрясения"
+  },
+  {
+    "id": 50,
+    "log1_en": "Thousands of people are under the rubble",
+    "log2_en": "The victims and dead are being counted",
+    "log3_en": "There is an analysis of the rubble in search of survivors",
+    "disaster": 12,
+    "log1_ru": "Тысячи людей находятся под завалами",
+    "log2_ru": "Идёт подсчёт пострадавших и погибших",
+    "log3_ru": "Идёт разбор завалов в поисках уцелевших"
+  },
+  {
+    "id": 8,
+    "log1_en": "A ban on air traffic has been introduced",
+    "log2_en": "People were encouraged to self-isolate",
+    "log3_en": "Restrictive measures have been introduced",
+    "disaster": 2,
+    "log1_ru": "Введен запрет авиасообщения ",
+    "log2_ru": "Людей призвали самоизолироваться",
+    "log3_ru": "Введены ограничительные меры"
+  },
+  {
+    "id": 16,
+    "log1_en": "The authorities reshuffled the government",
+    "log2_en": "The authorities announced the beginning of an economic crisis",
+    "log3_en": "They offered to close the borders for Russian citizens",
+    "disaster": 9,
+    "log1_ru": "Власти провели перестановки в правительстве",
+    "log2_ru": "Власти объявили о начале экономического кризиса",
+    "log3_ru": "Предложили закрыть границы для российских граждан"
+  },
+  {
+    "id": 9,
+    "log1_en": "There was an earthquake",
+    "log2_en": "There was an earthquake with a power of 7 points",
+    "log3_en": "Affected by the earthquake",
+    "disaster": 3,
+    "log1_ru": "Произошло землетресение",
+    "log2_ru": "Произошло землетрясение мощностью 7 баллов",
+    "log3_ru": "Пострадала от землетрясения"
+  },
+  {
+    "id": 51,
+    "log1_en": "Has the seasonal flu started?",
+    "log2_en": "A cold or a new illness?",
+    "log3_en": "A case of an unknown disease was recorded",
+    "disaster": 2,
+    "log1_ru": "Начался сезонный грипп?",
+    "log2_ru": "Простуда или новая болезнь?",
+    "log3_ru": "Зафиксирован случай заболевания неизвестной болезнью"
+  },
+  {
+    "id": 21,
+    "log1_en": "Several people were injured during the flood",
+    "log2_en": "There are victims",
+    "log3_en": "The damage will be calculated",
+    "disaster": 4,
+    "log1_ru": "Несколько людей получили травмы во время наводнения",
+    "log2_ru": "Есть пострадавшие",
+    "log3_ru": "Предстоит подсчёт ущерба"
+  },
+  {
+    "id": 18,
+    "log1_en": "The water level rose to critical",
+    "log2_en": "Flooding can leave thousands of people without a home",
+    "log3_en": "Affected by the earthquake",
+    "disaster": 4,
+    "log1_ru": "Уровень воды поднялся до критического ",
+    "log2_ru": "Наводнение может оставить тысячи людей без дома",
+    "log3_ru": "Пострадала от землетрясения"
+  },
+  {
+    "id": 35,
+    "log1_en": "The opposition United against the government",
+    "log2_en": "Conducted nuclear tests",
+    "log3_en": "The authorities accused the opposition of links with foreign intelligence",
+    "disaster": 5,
+    "log1_ru": "Оппозиция объединилась против правительства",
+    "log2_ru": "Провели ядерные испытания",
+    "log3_ru": "Власти обвинили оппозицию в связях с внешней разведкой"
+  },
+  {
+    "id": 47,
+    "log1_en": "There was a strong earthquake",
+    "log2_en": "There was a strong earthquake with a capacity of",
+    "log3_en": "Suffered from the strongest earthquake",
+    "disaster": 12,
+    "log1_ru": "Произошло сильнейшее землетрясение",
+    "log2_ru": "Произошло сильнейшее землетрясение мощностью",
+    "log3_ru": "Пострадала от сильнейшего землетрясения"
+  }
+]

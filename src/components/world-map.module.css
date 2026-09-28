@@ -1,0 +1,22 @@
+.world {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.embedded {
+  width: 530px;
+  height: 320px;
+}
+.world path,
+.embedded path {
+  fill: #e3a09e;
+  stroke: #929cad;
+  stroke-width: 1;
+  stroke-opacity: 0.8;
+  cursor: pointer;
+}
+.world path:hover,
+.embedded path:hover {
+  stroke-width: 2;
+  stroke-opacity: 1;
+}

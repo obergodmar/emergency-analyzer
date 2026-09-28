@@ -1,0 +1,55 @@
+.root {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: var(--warning);
+}
+.content {
+  z-index: 3;
+  position: absolute;
+  right: 1px;
+  top: 0;
+  width: 250px;
+  height: 250px;
+  background: var(--fg);
+  color: var(--bg);
+  transform: translateX(100%);
+  border-radius: 0 6px 6px 6px;
+  animation: appear 0.25s ease-in-out;
+  transition:
+    background-color 0.2s ease-in-out,
+    color 0.2s ease-in-out;
+}
+.scroll {
+  height: 100%;
+  overflow: auto;
+  font:
+    16px 'Roboto',
+    sans-serif;
+}
+.scroll > div {
+  padding: 10px;
+}
+.scroll p {
+  color: var(--bg);
+  margin-bottom: 5px;
+}
+.scroll::-webkit-scrollbar-thumb {
+  background: var(--bg);
+}
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@media (max-width: 600px) {
+  .content {
+    right: 0;
+    top: 1px;
+    border-radius: 6px 6px 0 6px;
+    transform: translate(0, -100%);
+  }
+}

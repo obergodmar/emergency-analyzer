@@ -1,0 +1,322 @@
+/* frontend/src/components/styled and menu: values retained, dynamic props become classes. */
+.container {
+  width: auto;
+  height: auto;
+  position: relative;
+  background: var(--bg);
+  border-radius: 8px;
+  box-shadow: var(--lg-shadow);
+  transition: background-color 0.2s ease-in-out;
+}
+.container + .container {
+  margin-left: 20px;
+}
+.horizontal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+}
+.title {
+  text-align: center;
+  padding: 10px;
+  font-family: 'Roboto', sans-serif;
+  color: var(--fg);
+  font-size: 32px;
+  font-weight: 400;
+  transition: color 0.2s ease-in-out;
+}
+.smallTitle {
+  font-size: 24px;
+}
+.text {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  color: var(--fg);
+  transition: color 0.2s ease-in-out;
+}
+.secondary {
+  display: block;
+  padding: 5px 0;
+  color: var(--secondary);
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  line-height: 1;
+  transition: color 0.2s ease-in-out;
+}
+.warning {
+  color: var(--warning);
+}
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background: var(--bg);
+  box-shadow: var(--base-shadow);
+  margin-top: 4px;
+  border-radius: 6px;
+  color: var(--fg);
+  transition:
+    background-color 0.2s ease-in-out,
+    color 0.2s ease-in-out;
+}
+.itemContent {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.itemIcon {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+}
+.itemIcon svg {
+  width: 26px;
+  height: 26px;
+}
+.flat {
+  box-shadow: unset;
+  border-radius: unset;
+}
+.flat.odd {
+  background: var(--darken);
+}
+.menuButton {
+  display: block;
+  position: relative;
+  z-index: 0;
+  text-align: left;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: transparent;
+  border-radius: 8px;
+  color: var(--fg);
+  transition: transform 0.3s ease-in-out;
+}
+.menuButton:hover,
+.menuButton:focus {
+  outline: none;
+  transform: scale(1.1, 1.2);
+}
+.menuButton:focus {
+  z-index: 1;
+}
+.menuButton:hover {
+  z-index: 2;
+}
+.noTransform:hover,
+.noTransform:focus {
+  transform: none;
+}
+.hoverDescription {
+  z-index: 4;
+  position: absolute;
+  pointer-events: none;
+  width: 90%;
+  bottom: 0;
+  padding: 10px;
+  left: 50%;
+  opacity: 0;
+  transform: translate(-50%, 100%);
+  background: var(--darken);
+  border-radius: 6px;
+  font:
+    16px 'Roboto',
+    sans-serif;
+  color: var(--fg);
+  transition: opacity 0.2s ease-in-out;
+}
+.menuButton:hover > .hoverDescription,
+.menuButton:focus > .hoverDescription {
+  opacity: 1;
+}
+.iconButton {
+  cursor: pointer;
+  border: 0;
+  background: transparent;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  color: var(--fg);
+  display: block;
+  line-height: normal;
+  transition:
+    background-color 0.2s ease-in-out,
+    color 0.2s ease-in-out;
+}
+.iconButton svg {
+  vertical-align: baseline;
+  pointer-events: none;
+}
+.iconButton:disabled {
+  pointer-events: none;
+  color: var(--fg);
+}
+.iconButton:hover,
+.iconButton:focus,
+.active {
+  outline: none;
+  background: var(--fg);
+  color: var(--hover);
+}
+.active {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.attention {
+  color: var(--warning);
+}
+.topMenu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  height: 60px;
+}
+.inFlow {
+  position: static;
+}
+.buttonGroup {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-left: 20px;
+}
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.spinner {
+  color: var(--fg);
+  animation: spin 2s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(359deg);
+  }
+}
+.progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  z-index: 8;
+  background: var(--warning);
+  box-shadow: 0 0 5px var(--warning);
+  animation: progress 1s ease-in-out infinite alternate;
+}
+@keyframes progress {
+  from {
+    opacity: 0.3;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.scroll {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  height: calc(100% - 40px);
+  overflow: auto;
+}
+.column {
+  margin: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.textButton {
+  vertical-align: middle;
+  font-size: 14px;
+  padding: 0 0 1px 4px;
+  font-style: oblique;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  color: var(--secondary);
+  background: transparent;
+  transition: border-bottom 0.2s ease-in-out;
+}
+.textButton:hover,
+.textButton:focus {
+  outline: none;
+  border-bottom-color: var(--warning);
+}
+.selectedText {
+  text-decoration: underline;
+}
+.input {
+  width: 100%;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  color: var(--fg);
+  background: var(--bg);
+  border-radius: 8px;
+  padding: 10px 20px;
+  height: 64px;
+  border: 0;
+  margin-top: 4px;
+  box-shadow: var(--base-shadow);
+  transition:
+    transform 0.3s ease-in-out,
+    background-color 0.2s ease-in-out,
+    color 0.2s ease-in-out;
+}
+.input::placeholder {
+  color: var(--warning);
+}
+.input:hover,
+.input:focus {
+  outline: none;
+  transform: scale(1.1, 1.2);
+}
+.input.noTransform:hover,
+.input.noTransform:focus {
+  transform: none;
+}
+.noShadow {
+  box-shadow: none;
+}
+.error {
+  font:
+    16px 'Roboto',
+    sans-serif;
+  color: var(--warning);
+  padding: 10px 20px;
+}
+@media (max-width: 520px) {
+  .title {
+    font-size: 20px;
+  }
+  .notMobile {
+    display: none;
+  }
+  .itemContent {
+    width: 300px;
+  }
+  .buttonGroup {
+    margin-left: 0;
+  }
+}
+@media (max-width: 600px) {
+  .active {
+    border-bottom-right-radius: 6px;
+    border-top-left-radius: 0;
+  }
+}

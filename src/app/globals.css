@@ -1,0 +1,148 @@
+/* Reset and theme values from frontend/src/theme and styled-reset. */
+html,
+body,
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+p,
+a,
+img,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figure,
+figcaption,
+footer,
+header,
+menu,
+nav,
+section,
+summary {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+:root {
+  color-scheme: light;
+  --fg: #6b6b6b;
+  --secondary: #b1b1b1;
+  --warning: #e3a09e;
+  --bg: #f1f3f1;
+  --darken: #d6dcd6;
+  --hover: #f6f6f4;
+  --lg-shadow: 0 20px 20px 20px rgba(0, 0, 0, 0.1);
+  --base-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --fg: #c4c4c4;
+  --secondary: #919191;
+  --bg: #2c2c2b;
+  --darken: #6c6c69;
+  --hover: #444;
+}
+body {
+  background: var(--bg);
+  color: var(--fg);
+}
+button,
+input,
+select {
+  font-family: 'Roboto', sans-serif;
+}
+button {
+  cursor: pointer;
+}
+button:disabled {
+  cursor: default;
+}
+a {
+  color: inherit;
+}
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--warning);
+  outline-offset: 2px;
+}
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--fg);
+  border-radius: 6px;
+}
+
+.simulation-map,
+.mapbox-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.map-unavailable {
+  position: absolute;
+  bottom: 40px;
+  right: 20px;
+  font:
+    14px 'Roboto',
+    sans-serif;
+  color: var(--secondary);
+  max-width: 300px;
+}
+.mapboxgl-ctrl-bottom-right {
+  bottom: 30px;
+}
+.mapboxgl-ctrl-bottom-left {
+  bottom: 30px;
+}

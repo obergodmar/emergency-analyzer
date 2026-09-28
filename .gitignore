@@ -1,0 +1,14 @@
+node_modules/
+.next/
+.devenv/
+.direnv/
+.env*
+!.env.example
+*.tsbuildinfo
+coverage/
+playwright-report/
+test-results/
+!.envrc
+
+/public/pdf-assets/
+/public/pdf.worker.min.mjs

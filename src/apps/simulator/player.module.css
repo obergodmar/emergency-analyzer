@@ -1,0 +1,35 @@
+.middle {
+  position: absolute;
+  left: 30px;
+  top: 120px;
+  z-index: 2;
+}
+.result {
+  position: relative;
+  width: 300px;
+}
+.time {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.notice {
+  font:
+    14px/1.3 'Roboto',
+    sans-serif;
+}
+.empty {
+  position: absolute;
+  left: 30px;
+  top: 30px;
+  font:
+    16px/1.5 'Roboto',
+    sans-serif;
+}
+@media (max-width: 600px) {
+  .middle {
+    top: auto;
+    bottom: 60px;
+  }
+}
