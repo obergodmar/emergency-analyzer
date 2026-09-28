@@ -1,12 +1,12 @@
 import 'server-only';
 import { createHmac, randomUUID, timingSafeEqual } from 'node:crypto';
 import { cookies } from 'next/headers';
+import { ConfigurationError } from './configuration-error';
 
 export async function sessionOwner(create = false): Promise<string | null> {
   const secret = process.env.SESSION_SECRET;
 
-  if (!secret || secret.length < 32)
-    throw new Error('SESSION_SECRET must contain at least 32 characters');
+  if (!secret || secret.length < 32) throw new ConfigurationError('INVALID_SESSION_SECRET');
 
   const jar = await cookies();
   const sign = (id: string) => createHmac('sha256', secret).update(id).digest('hex');

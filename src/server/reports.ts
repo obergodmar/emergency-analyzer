@@ -2,13 +2,17 @@ import 'server-only';
 import { neon } from '@neondatabase/serverless';
 import type { SimulationReport } from '@/core/simulation/types';
 import { REPORT_LIMIT } from '@/core/reports/retention';
+import { ConfigurationError } from './configuration-error';
 
 export const persistenceEnabled = () => Boolean(process.env.DATABASE_URL);
 
 function db() {
-  if (!process.env.DATABASE_URL) throw new Error('DATABASE_URL is missing');
-
-  return neon(process.env.DATABASE_URL);
+  try {
+    return neon(process.env.DATABASE_URL?.trim() ?? '');
+  } catch {
+    // Driver validation errors can contain the supplied URL. Never log their messages.
+    throw new ConfigurationError('INVALID_DATABASE_URL');
+  }
 }
 
 export async function saveReport(owner: string, report: SimulationReport) {

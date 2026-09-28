@@ -23,9 +23,13 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
+  let stage = 'validate';
+
   try {
     checkOrigin(request);
     const input = inputSchema.parse(await readJson(request));
+
+    stage = 'simulate';
     const report = {
       id: randomUUID(),
       createdAt: new Date().toISOString(),
@@ -34,13 +38,19 @@ export async function POST(request: Request) {
     };
     const persistent = persistenceEnabled();
 
-    if (persistent) await saveReport((await sessionOwner(true))!, report);
+    if (persistent) {
+      stage = 'session';
+      const owner = (await sessionOwner(true))!;
+
+      stage = 'save-report';
+      await saveReport(owner, report);
+    }
 
     return Response.json(
       { report, persistent },
       { status: 201, headers: { 'Cache-Control': 'private, no-store' } },
     );
   } catch (error) {
-    return failure(error);
+    return failure(error, stage);
   }
 }

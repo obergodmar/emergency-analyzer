@@ -1,5 +1,6 @@
 import 'server-only';
 import { ZodError } from 'zod';
+import { ConfigurationError } from './configuration-error';
 
 export class HttpError extends Error {
   constructor(
@@ -59,7 +60,7 @@ export function checkOrigin(request: Request) {
   if (origin !== `${protocol}//${host}`) throw new HttpError(403, 'Invalid origin');
 }
 
-export function failure(error: unknown) {
+export function failure(error: unknown, stage = 'request') {
   if (error instanceof ZodError)
     return Response.json(
       { error: 'Invalid simulation settings', issues: error.issues },
@@ -70,10 +71,19 @@ export function failure(error: unknown) {
     return Response.json({ error: error.message }, { status: error.status });
 
   // Do not return driver errors, connection strings, or submitted content to the browser.
-  console.error(
-    'Emergency Analyzer request failed:',
-    error instanceof Error ? error.name : 'UnknownError',
-  );
+  const sqlState =
+    error instanceof Error &&
+    'code' in error &&
+    typeof error.code === 'string' &&
+    /^[0-9A-Z]{5}$/.test(error.code)
+      ? error.code
+      : undefined;
+
+  console.error('Emergency Analyzer request failed:', {
+    stage,
+    kind: error instanceof Error ? error.name : 'UnknownError',
+    code: error instanceof ConfigurationError ? error.code : sqlState,
+  });
 
   return Response.json(
     { error: 'Service unavailable. Check server configuration.' },
