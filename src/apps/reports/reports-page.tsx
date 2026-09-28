@@ -1,4 +1,5 @@
 'use client';
+
 import { setCurrentReport } from '@/apps/reports/current-report';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -14,6 +15,7 @@ import { ProgressBar } from '@/components/ui/loading';
 import { tabReports } from './storage';
 import ui from '@/components/ui/ui.module.css';
 import styles from './reports.module.css';
+
 const columns = [
   'settings.disaster.name.value',
   'reports.result.virus',
@@ -27,6 +29,7 @@ const columns = [
   'reports.result.deaths',
   'reports.result.victims',
 ];
+
 export function ReportsPage() {
   const { locale, t: localize } = usePreferences();
   const t = useTranslation();
@@ -34,11 +37,14 @@ export function ReportsPage() {
   const [reports, setReports] = useState<SimulationReport[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+
   useEffect(() => {
     const controller = new AbortController();
+
     fetch('/api/simulations', { signal: controller.signal })
       .then(async (response) => {
         if (!response.ok) throw new Error();
+
         return response.json();
       })
       .then((data) => setReports(data.persistent ? data.reports : tabReports()))
@@ -48,8 +54,10 @@ export function ReportsPage() {
       .finally(() => {
         if (!controller.signal.aborted) setLoading(false);
       });
+
     return () => controller.abort();
   }, []);
+
   return (
     <>
       {loading && <ProgressBar />}
@@ -116,6 +124,7 @@ export function ReportsPage() {
                     report.result.victims.toLocaleString(locale),
                     new Date(report.createdAt).toLocaleString(locale),
                   ];
+
                   return (
                     <tr key={report.id}>
                       {cells.map((value, i) => (

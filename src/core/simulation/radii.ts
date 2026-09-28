@@ -12,6 +12,7 @@ export function calculateRadii(input: SimulationInput): {
   let radii: Triple;
   let period: number;
   let delay = 0;
+
   switch (input.type) {
     case 1: {
       const b = lookup(catalog.atomicbomb, input.bombId);
@@ -41,45 +42,56 @@ export function calculateRadii(input: SimulationInput): {
           4.5387 * b.diameter +
           7.106 * cls,
       ];
+
       radii = first.map((r, i) =>
         s === 1 ? (r * 5) / 6 : s === 3 ? (second[i] * 4) / 3 : (r + second[i]) / 2,
       ) as Triple;
       period = Math.trunc(21 / d);
       break;
     }
+
     case 2: {
       const v = input.virus!;
       const r = v.incubationDays * v.contagiousness * s * scale * d;
+
       radii = [r * 0.05, r * 0.65, r * 1.21];
       period =
         Math.trunc((Math.trunc((Math.trunc(93 / d) * 3) / scale) * s) / 2) + v.incubationDays;
       delay = v.incubationDays * 86400;
       break;
     }
+
     case 3: {
       const r = scale * s * d;
+
       radii = [r * 0.1, r * 0.5, r * 0.7];
       period = Math.trunc(30 / d);
       delay = 86400 / d;
       break;
     }
+
     case 4: {
       const r = scale * s * 1.618;
+
       radii = [r * 0.3, r * 0.7, r];
       period = Math.trunc(30 / d);
       delay = 43200 / d;
       break;
     }
+
     case 5: {
       const object = lookup(catalog.spaceobject, input.spaceObjectId);
+
       if (object.type === 3) {
         const r = scale * s * lookup(catalog.typespaceobject, 3).coefficient;
+
         radii = [r * 0.271, r * 0.6243, r * 0.9426];
         period = Math.trunc(5 / d);
       } else {
         const r =
           object.size! *
           (1 - (0.15 * lookup(catalog.material, input.materialId).coefficient) / (s * scale * d));
+
         radii = [
           r,
           Math.min(6370, r * 2.1762 * r ** 0.8638),
@@ -87,21 +99,27 @@ export function calculateRadii(input: SimulationInput): {
         ];
         period = Math.trunc(3 / d);
       }
+
       break;
     }
+
     case 6: {
       const model = chemicalModel(input);
+
       radii = model.radii;
       period = model.period;
       delay = 3540 / d;
       break;
     }
+
     default:
       throw new Error('Unsupported scenario');
   }
+
   // Nested zones must remain finite, nonnegative and ordered, including broken legacy regressions.
   radii = radii.map((r, i, all) =>
     Math.min(6370, Math.max(0, ...all.slice(0, i + 1).map((n) => (Number.isFinite(n) ? n : 6370)))),
   ) as Triple;
+
   return { radii, period: Math.max(1, period), delay: Math.trunc(delay) };
 }

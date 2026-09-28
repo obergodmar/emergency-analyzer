@@ -12,23 +12,30 @@ vi.mock('@neondatabase/serverless', () => ({
     const sql = (strings: TemplateStringsArray, ...values: unknown[]) =>
       strings.reduce((query, part, index) => {
         if (index === values.length) return query + part;
+
         const value = values[index];
+
         return (
           query +
           part +
           (typeof value === 'number' ? value : `'${String(value).replaceAll("'", "''")}'`)
         );
       }, '');
+
     sql.transaction = async (queries: string[], options: { isolationLevel: string }) => {
       expect(options.isolationLevel).toBe('ReadCommitted');
+
       return execute(`BEGIN ISOLATION LEVEL READ COMMITTED; ${queries.join(';')}; COMMIT;`);
     };
+
     return sql;
   },
 }));
 
 import { saveReport } from '../../src/server/reports';
+
 const owner = randomUUID();
+
 async function execute(query: string) {
   const { stdout } = await promisify(execFile)('psql', [
     '-X',
@@ -38,8 +45,10 @@ async function execute(query: string) {
     '-c',
     query,
   ]);
+
   return stdout.trim();
 }
+
 function report(): SimulationReport {
   return {
     id: randomUUID(),
@@ -48,6 +57,7 @@ function report(): SimulationReport {
     result: {},
   } as SimulationReport;
 }
+
 beforeEach(async () => {
   await execute('DROP TABLE IF EXISTS ea_reports');
   await execute(await readFile('migrations/001_reports.sql', 'utf8'));
@@ -57,6 +67,7 @@ beforeEach(async () => {
 });
 test('new report evicts oldest globally, including another owner', async () => {
   const next = report();
+
   await saveReport(randomUUID(), next);
   expect(await execute('SELECT count(*) FROM ea_reports')).toBe('250');
   expect(
@@ -66,6 +77,7 @@ test('new report evicts oldest globally, including another owner', async () => {
 });
 test('concurrent requests preserve exactly 250 rows and all new reports', async () => {
   const reports = Array.from({ length: 20 }, report);
+
   await Promise.all(reports.map((item) => saveReport(randomUUID(), item)));
   expect(await execute('SELECT count(*) FROM ea_reports')).toBe('250');
   expect(await execute(`SELECT count(*) FROM ea_reports WHERE created_at >= '2020-01-01'`)).toBe(
@@ -84,6 +96,7 @@ test('retention migration trims existing excess and is idempotent', async () => 
     `INSERT INTO ea_reports (id, owner_id, input, result) SELECT gen_random_uuid(), '${owner}', '{}', '{}' FROM generate_series(1, 30)`,
   );
   const migration = await readFile('migrations/002_report_retention.sql', 'utf8');
+
   await execute(`BEGIN; ${migration} COMMIT;`);
   await execute(`BEGIN; ${migration} COMMIT;`);
   expect(await execute('SELECT count(*) FROM ea_reports')).toBe('250');

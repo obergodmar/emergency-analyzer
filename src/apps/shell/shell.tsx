@@ -1,4 +1,5 @@
 'use client';
+
 import { useState, type ReactNode } from 'react';
 import { MdLanguage } from '@/components/ui/icons';
 import { CgFormatSlash, CgDarkMode } from '@/components/ui/icons';
@@ -7,10 +8,12 @@ import { useTranslation } from './use-translation';
 import { Modal } from '@/components/ui/modal';
 import ui from '@/components/ui/ui.module.css';
 import styles from './shell.module.css';
+
 export function Shell({ children }: { children: ReactNode }) {
   const { locale, setLocale, dark, setDark, t: localize } = usePreferences();
   const t = useTranslation();
   const [about, setAbout] = useState(false);
+
   return (
     <div className={styles.page}>
       <main id="main-content" className={styles.main}>

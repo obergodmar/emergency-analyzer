@@ -1,4 +1,5 @@
 import type { SimulationResult } from './types';
+
 export function timeline(result: SimulationResult, progress: number) {
   const fraction = Math.max(0, Math.min(1, progress));
   const elapsed = fraction * result.periodDays * 86400;
@@ -9,6 +10,7 @@ export function timeline(result: SimulationResult, progress: number) {
       : fraction === 1
         ? 1
         : 0;
+
   return {
     deaths: Math.round(result.deaths * mortalityProgress),
     victims: Math.round(result.victims * fraction),

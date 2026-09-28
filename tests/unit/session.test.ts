@@ -2,6 +2,7 @@ import { beforeEach, expect, it, vi } from 'vitest';
 import { createHmac } from 'node:crypto';
 
 const { store, write } = vi.hoisted(() => ({ store: new Map<string, string>(), write: vi.fn() }));
+
 vi.mock('server-only', () => ({}));
 vi.mock('next/headers', () => ({
   cookies: async () => ({
@@ -22,6 +23,7 @@ it('does not create a session on read-only requests', async () => {
 });
 it('creates signed HTTP-only same-site cookies', async () => {
   const owner = await sessionOwner(true);
+
   expect(owner).toMatch(/^[a-f0-9-]{36}$/);
   expect(write).toHaveBeenCalledWith(
     'ea-session',
@@ -34,6 +36,7 @@ it('creates signed HTTP-only same-site cookies', async () => {
 it('rejects a forged owner ID or signature', async () => {
   const owner = '7b3778a4-b027-424d-bb59-c25ccf18bf42';
   const signature = createHmac('sha256', process.env.SESSION_SECRET!).update(owner).digest('hex');
+
   store.set('ea-session', owner + '.' + signature);
   expect(await sessionOwner()).toBe(owner);
   store.set('ea-session', '8' + owner.slice(1) + '.' + signature);

@@ -1,35 +1,44 @@
 import { expect, test, type Page } from '@playwright/test';
 import { catalog } from '../../src/core/catalog';
 import { defaultInput } from '../../src/core/simulation/schema';
+
 async function select(page: Page, title: string, value: string, search = false) {
   await page.getByRole('button', { name: title, exact: true }).click();
   const dialog = page.getByRole('dialog', { name: title, exact: true });
+
   if (search) await dialog.getByRole('textbox').fill(value);
+
   await dialog
     .getByRole('button', { name: new RegExp('^' + value) })
     .first()
     .click();
   await expect(dialog).toHaveCount(0);
 }
+
 async function configure(page: Page, type = 4) {
   await page.goto('/settings');
   await select(page, 'Вид бедствия', catalog.disastertype[type - 1].name_ru);
   if (type === 1) await select(page, 'Тип атомной бомбы', 'Малыш', true);
+
   if (type === 2) {
     await select(page, 'Класс вируса', 'Ортомиксовирус');
     await page.getByRole('textbox', { name: 'Введите название вируса' }).fill('Test virus');
   }
+
   if (type === 5) {
     await select(page, 'Тип небесного тела', 'Метеорит');
     await select(page, 'Материал', 'Неметалл');
   }
+
   await select(page, 'Сила', 'Низкий уровень');
   await select(page, 'Продолжительность', 'Постепенно');
   await select(page, 'Масштаб', 'Небольшая площадь');
   await select(page, 'Страна', 'Андорра', true);
 }
+
 test('original home composition, language, themes and about', async ({ page }) => {
   const errors: string[] = [];
+
   page.on('pageerror', (e) => errors.push(e.message));
   await page.goto('/');
   await expect(page.getByRole('heading', { name: 'Emergency Analyzer' })).toBeVisible();
@@ -38,6 +47,7 @@ test('original home composition, language, themes and about', async ({ page }) =
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
   const menu = await page.locator('nav').boundingBox();
   const size = page.viewportSize()!;
+
   expect(Math.abs(menu!.x + menu!.width / 2 - size.width / 2)).toBeLessThan(1);
   expect(
     Math.abs(menu!.y + menu!.height / 2 - size.height * (size.width <= 520 ? 0.55 : 0.5)),
@@ -84,6 +94,7 @@ test('progressive settings, playback, reload, reports and CSV', async ({ page })
   await expect(page.locator('tbody tr')).toHaveCount(1);
   await page.screenshot({ path: `test-results/reports-${test.info().project.name}.png` });
   const download = page.waitForEvent('download');
+
   await page.getByRole('button', { name: 'Скачать отчёты', exact: true }).click();
   expect((await download).suggestedFilename()).toBe('emergency-analyzer.csv');
   await page.getByRole('button', { name: 'Запустить', exact: true }).click();
@@ -100,6 +111,7 @@ test('all six scenarios work through original menus', async ({ page }) => {
 });
 test('local PDF guide renders in both languages', async ({ page }) => {
   const errors: string[] = [];
+
   page.on('pageerror', (e) => errors.push(e.message));
   await page.goto('/references');
   await expect(page.locator('.react-pdf__Page canvas')).toHaveCount(7, { timeout: 30000 });
@@ -140,10 +152,12 @@ test('API validates malformed bodies, foreign origins and unknown references', a
     ).status(),
   ).toBe(413);
   const result = await request.post('/api/simulations', { data: defaultInput });
+
   expect(result.status()).toBe(201);
   expect((await result.json()).persistent).toBe(false);
   expect((await request.get('/api/simulations/invalid')).status()).toBe(400);
   expect((await request.get('/api/catalog/__proto__')).status()).toBe(404);
   const regions = await (await request.get('/api/catalog/regions?countryId=185')).json();
+
   expect(regions.items.every((r: { country: number }) => r.country === 185)).toBe(true);
 });

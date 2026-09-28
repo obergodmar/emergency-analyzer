@@ -1,5 +1,6 @@
 import { TopMenu } from '@/components/ui/top-menu';
 import ui from '@/components/ui/ui.module.css';
+
 export default function NotFound() {
   return (
     <TopMenu>

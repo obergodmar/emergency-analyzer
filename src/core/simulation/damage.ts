@@ -5,6 +5,7 @@ import type { Triple } from './types';
 
 export const area = (radius: number) => 3.14 * radius ** 2;
 export const historicalWorld = { population: 7830458560, density: 30 };
+
 export function calculateDamage(
   input: SimulationInput,
   radii: Triple,
@@ -31,8 +32,10 @@ export function calculateDamage(
       Math.trunc(n * b),
       n - Math.trunc(n * a) - Math.trunc(n * b),
     ];
+
     return { deaths: split(deaths, 0.1, 0.6), victims: split(victims, 0.1, 0.3) };
   }
+
   const isMeteor = input.type === 5 && lookup(catalog.spaceobject, input.spaceObjectId).type === 3;
   const ratios: Record<number, { deaths: Triple; victims: Triple; corrections: [number, number] }> =
     {
@@ -53,12 +56,14 @@ export function calculateDamage(
     const outer = area(radius),
       inner = i ? area(radii[i - 1]) : 0;
     const localArea = Math.max(0, Math.min(outer, regionArea) - Math.min(inner, regionArea));
+
     return localArea * density + Math.max(0, outer - inner - localArea) * historicalWorld.density;
   });
   const estimate = (values: Triple, correction: number) =>
     exposed.map((n, i) =>
       Math.trunc(n * values[i] * Math.exp(Math.trunc(input.strength / correction))),
     ) as Triple;
+
   return {
     deaths:
       input.type === 6

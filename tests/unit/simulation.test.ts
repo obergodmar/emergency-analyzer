@@ -14,6 +14,7 @@ describe('historical simulation models', () => {
       delay: 43200,
     });
     const earthquake = calculateRadii({ ...defaultInput, type: 4 });
+
     expect(earthquake.radii[0]).toBeCloseTo(1.9416, 8);
     expect(earthquake.radii[1]).toBeCloseTo(4.5304, 8);
     expect(earthquake.radii[2]).toBeCloseTo(6.472, 8);
@@ -22,6 +23,7 @@ describe('historical simulation models', () => {
   it('preserves the low-strength historical bomb power-law fixture', () => {
     const bomb = catalog.atomicbomb.find((b) => b.id === 1)!;
     const { radii } = calculateRadii({ ...defaultInput, type: 1, strength: 1 });
+
     expect(radii[0]).toBeCloseTo((2.4202 * bomb.charge ** 0.3422 * 5) / 6, 8);
     expect(radii[1]).toBeCloseTo((6.116 * bomb.charge ** 0.2629 * 5) / 6, 8);
     expect(radii[2]).toBeCloseTo((15.1641 * bomb.charge ** 0.3109 * 5) / 6, 8);
@@ -32,11 +34,13 @@ describe('historical simulation models', () => {
         for (let duration = 1; duration <= 3; duration++)
           for (let scale = 1; scale <= 3; scale++) {
             const result = simulate({ ...defaultInput, type, strength, duration, scale });
+
             expect(result.deaths).toBe(result.zones.reduce((sum, z) => sum + z.deaths, 0));
             expect(result.victims).toBe(result.zones.reduce((sum, z) => sum + z.victims, 0));
             expect(result.deathsOnRegion).toBeLessThanOrEqual(result.population);
             expect(result.victimsOnRegion).toBeLessThanOrEqual(result.population);
             let previous = 0;
+
             for (const zone of result.zones) {
               expect(Number.isFinite(zone.radiusKm)).toBe(true);
               expect(zone.radiusKm).toBeGreaterThanOrEqual(previous);
@@ -46,6 +50,7 @@ describe('historical simulation models', () => {
               expect(Number.isSafeInteger(zone.victims)).toBe(true);
               expect(zone.victims).toBeGreaterThanOrEqual(0);
             }
+
             expect(timeline(result, 1).deaths).toBe(result.deaths);
             expect(timeline(result, 1).victims).toBe(result.victims);
           }
@@ -96,6 +101,7 @@ describe('historical simulation models', () => {
               weight: 1000,
             },
           });
+
           expect(Number.isFinite(result.zones[2].radiusKm)).toBe(true);
           expect(result.victims).toBeGreaterThanOrEqual(0);
         }
@@ -103,6 +109,7 @@ describe('historical simulation models', () => {
   it('is deterministic and does not mutate submitted parameters', () => {
     const input = structuredClone(defaultInput),
       original = structuredClone(input);
+
     expect(simulate(input)).toEqual(simulate(input));
     expect(input).toEqual(original);
   });
@@ -112,6 +119,7 @@ describe('historical simulation models', () => {
       ...defaultInput,
       buildings: [{ type: 2, capacity: 1000000, latitude: -80, longitude: -170 }],
     });
+
     expect(far).toEqual(base);
     const near = simulate({
       ...defaultInput,
@@ -119,6 +127,7 @@ describe('historical simulation models', () => {
         { type: 2, capacity: 1000000, latitude: base.latitude + 0.03, longitude: base.longitude },
       ],
     });
+
     expect(near.deaths).toBeLessThanOrEqual(base.deaths);
     expect(near.victims).toBeLessThanOrEqual(base.victims);
   });
@@ -136,10 +145,12 @@ describe('validation and animation', () => {
     ])
       expect(inputSchema.safeParse({ ...defaultInput, ...patch }).success).toBe(false);
     const region = catalog.regions.find((r) => r.country !== defaultInput.countryId)!;
+
     expect(inputSchema.safeParse({ ...defaultInput, regionId: region.id }).success).toBe(false);
   });
   it('delays mortality and reaches exact final totals for viruses', () => {
     const result = simulate({ ...defaultInput, type: 2 });
+
     expect(timeline(result, 0).deaths).toBe(0);
     expect(
       timeline(result, (result.startDeathsSeconds / (result.periodDays * 86400)) * 0.5).deaths,
@@ -151,6 +162,7 @@ describe('validation and animation', () => {
     expect(distanceKm(0, 0, 0, 1)).toBeCloseTo(111.195, 2);
     expect(distanceKm(50, 20, 50, 20)).toBe(0);
     const circle = circleCoordinates(55, 37, 10);
+
     expect(circle[0][0]).toBeCloseTo(circle.at(-1)![0], 8);
     expect(circle[0][1]).toBeCloseTo(circle.at(-1)![1], 8);
     expect(distanceKm(55, 37, circle[20][1], circle[20][0])).toBeCloseTo(10, 6);
@@ -159,5 +171,6 @@ describe('validation and animation', () => {
 
 it('does not require chemical parameters for other disaster types', () => {
   const { chemical: _chemical, ...input } = defaultInput;
+
   expect(() => simulate(input)).not.toThrow();
 });

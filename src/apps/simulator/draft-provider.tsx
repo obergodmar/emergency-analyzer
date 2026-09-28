@@ -1,4 +1,5 @@
 'use client';
+
 import {
   createContext,
   useContext,
@@ -9,6 +10,7 @@ import {
 } from 'react';
 import { z } from 'zod';
 import { emptyDraft, type Draft } from '@/core/settings/draft';
+
 const key = 'ea-settings';
 const initial = JSON.stringify(emptyDraft);
 let memory = initial;
@@ -28,6 +30,7 @@ const schema = z.object({
   contagiousness: z.number().min(0.1).max(1),
   symptoms: z.array(z.number().int().nonnegative()).max(60),
 });
+
 function read() {
   try {
     return sessionStorage.getItem(key) ?? memory;
@@ -35,23 +38,30 @@ function read() {
     return memory;
   }
 }
+
 function parse(value: string): Draft {
   try {
     const parsed = schema.safeParse(JSON.parse(value));
+
     return parsed.success ? parsed.data : emptyDraft;
   } catch {
     return emptyDraft;
   }
 }
+
 function subscribe(callback: () => void) {
   window.addEventListener(key, callback);
+
   return () => window.removeEventListener(key, callback);
 }
+
 const Context = createContext<{ draft: Draft; setDraft: Dispatch<SetStateAction<Draft>> } | null>(
   null,
 );
+
 export function DraftProvider({ children }: { children: ReactNode }) {
   const stored = useSyncExternalStore(subscribe, read, () => initial);
+
   const draft = parse(stored);
   const setDraft: Dispatch<SetStateAction<Draft>> = (next) => {
     memory = JSON.stringify(typeof next === 'function' ? next(parse(read())) : next);
@@ -60,12 +70,17 @@ export function DraftProvider({ children }: { children: ReactNode }) {
     } catch {
       /* Keep the draft in memory when storage is unavailable. */
     }
+
     window.dispatchEvent(new Event(key));
   };
+
   return <Context.Provider value={{ draft, setDraft }}>{children}</Context.Provider>;
 }
+
 export function useDraft() {
   const value = useContext(Context);
+
   if (!value) throw new Error('DraftProvider required');
+
   return value;
 }

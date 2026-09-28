@@ -1,4 +1,5 @@
 'use client';
+
 import {
   GiNuclearBomb,
   GiAsteroid,
@@ -27,11 +28,13 @@ import { MenuItem } from '@/components/ui/menu-item';
 import { IconButton } from '@/components/ui/icon-button';
 import ui from '@/components/ui/ui.module.css';
 import styles from './settings.module.css';
+
 export type Option = Named & {
   description_ru?: string | null;
   description_en?: string | null;
   charge?: number;
 };
+
 export function Selection({
   title,
   placeholder,
@@ -54,6 +57,7 @@ export function Selection({
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState('');
   const [direction, setDirection] = useState(1);
+
   const optionIcons =
     items === catalog.disastertype
       ? [GiNuclearBomb, RiVirusFill, RiFloodFill, RiEarthquakeFill, GiAsteroid, GiFactory]
@@ -80,6 +84,7 @@ export function Selection({
             : label(a, locale).localeCompare(label(b, locale), locale))
         : a.id - b.id,
     );
+
   return (
     <div className={styles.selection}>
       <button
@@ -124,6 +129,7 @@ export function Selection({
           <div className={long ? styles.options : undefined}>
             {shown.map((item, i) => {
               const OptionIcon = optionIcons[item.id - 1];
+
               return (
                 <button
                   key={item.id}

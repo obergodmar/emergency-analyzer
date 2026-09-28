@@ -1,4 +1,5 @@
 'use client';
+
 import { useState, type ReactNode } from 'react';
 import { catalog, label } from '@/core/catalog';
 import { useDraft } from './draft-provider';
@@ -7,6 +8,7 @@ import { useTranslation } from '@/apps/shell/use-translation';
 import { WorldMap } from '@/components/world-map';
 import ui from '@/components/ui/ui.module.css';
 import styles from './settings.module.css';
+
 function Description({ children }: { children: ReactNode }) {
   return (
     <section className={styles.description}>
@@ -16,12 +18,15 @@ function Description({ children }: { children: ReactNode }) {
     </section>
   );
 }
+
 function Symptom({ id }: { id: number }) {
   const { draft, setDraft } = useDraft();
   const { locale } = usePreferences();
   const t = useTranslation();
   const [expanded, setExpanded] = useState(false);
+
   const symptom = catalog.symptoms.find((s) => s.id === id)!;
+
   return (
     <li>
       <input
@@ -47,12 +52,16 @@ function Symptom({ id }: { id: number }) {
     </li>
   );
 }
+
 export function SettingsDescriptions() {
   const { draft, setDraft } = useDraft();
   const { locale } = usePreferences();
   const t = useTranslation();
+
   const type = catalog.disastertype.find((x) => x.id === draft.type);
+
   if (!type) return null;
+
   const feature = (
     draft.type === 1
       ? catalog.atomicbomb
@@ -64,6 +73,7 @@ export function SettingsDescriptions() {
   const disaster = catalog.disaster.find((x) => x.type === draft.type && x.lvl === draft.strength);
   const country = catalog.countries.find((x) => x.id === draft.country);
   const symptomIds = catalog.symptoms.filter((s) => s.idclass === draft.feature).map((s) => s.id);
+
   return (
     <>
       {feature && (

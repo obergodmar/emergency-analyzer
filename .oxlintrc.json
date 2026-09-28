@@ -4,5 +4,87 @@
   "categories": {
     "correctness": "error"
   },
-  "ignorePatterns": [".next/**", "next-env.d.ts", "coverage/**", "playwright-report/**"]
+  "ignorePatterns": [".next/**", "next-env.d.ts", "coverage/**", "playwright-report/**"],
+  "jsPlugins": [
+    {
+      "name": "stylistic",
+      "specifier": "@stylistic/eslint-plugin"
+    }
+  ],
+  "rules": {
+    "stylistic/padding-line-between-statements": [
+      "error",
+      {
+        "blankLine": "always",
+        "prev": "directive",
+        "next": "*"
+      },
+      {
+        "blankLine": "any",
+        "prev": "directive",
+        "next": "directive"
+      },
+      {
+        "blankLine": "always",
+        "prev": "import",
+        "next": "*"
+      },
+      {
+        "blankLine": "any",
+        "prev": "import",
+        "next": "import"
+      },
+      {
+        "blankLine": "always",
+        "prev": ["const", "let", "var"],
+        "next": "*"
+      },
+      {
+        "blankLine": "any",
+        "prev": ["const", "let", "var"],
+        "next": ["const", "let", "var"]
+      },
+      {
+        "blankLine": "always",
+        "prev": "*",
+        "next": ["return", "function", "class", "interface", "type"]
+      },
+      {
+        "blankLine": "always",
+        "prev": ["function", "class", "interface", "type", "block-like", "if"],
+        "next": "*"
+      },
+      {
+        "blankLine": "always",
+        "prev": "*",
+        "next": "export"
+      },
+      {
+        "blankLine": "always",
+        "prev": "export",
+        "next": "*"
+      },
+      {
+        "blankLine": "any",
+        "prev": "singleline-export",
+        "next": "singleline-export"
+      },
+      {
+        "blankLine": "always",
+        "prev": {
+          "selector": "VariableDeclaration:has(CallExpression[callee.name=/^use[A-Z]/])"
+        },
+        "next": ["const", "let"]
+      },
+      {
+        "blankLine": "any",
+        "prev": {
+          "selector": "VariableDeclaration:has(CallExpression[callee.name=/^use[A-Z]/])"
+        },
+        "next": {
+          "selector": "VariableDeclaration:has(CallExpression[callee.name=/^use[A-Z]/])"
+        }
+      }
+    ]
+  }
 }

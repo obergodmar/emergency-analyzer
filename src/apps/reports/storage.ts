@@ -2,6 +2,7 @@ import type { SimulationReport } from '@/core/simulation/types';
 import { REPORT_LIMIT } from '@/core/reports/retention';
 
 const key = 'ea-tab-reports';
+
 export function tabReports(): SimulationReport[] {
   try {
     return JSON.parse(sessionStorage.getItem(key) ?? '[]') as SimulationReport[];
@@ -9,6 +10,7 @@ export function tabReports(): SimulationReport[] {
     return [];
   }
 }
+
 export function cacheReport(report: SimulationReport) {
   // Storage failure must be visible: otherwise the result page would silently lose the report.
   sessionStorage.setItem(
@@ -18,6 +20,7 @@ export function cacheReport(report: SimulationReport) {
     ),
   );
 }
+
 export function removeTabReport(id: string) {
   sessionStorage.setItem(key, JSON.stringify(tabReports().filter((r) => r.id !== id)));
 }

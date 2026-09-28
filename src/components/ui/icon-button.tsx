@@ -1,4 +1,5 @@
 'use client';
+
 import { useState, type ButtonHTMLAttributes } from 'react';
 import {
   TiArrowBack,
@@ -45,7 +46,9 @@ const icons = {
   notification: [BsBell, BsBellFill],
   reportsPlay: [GiBleedingEye, GiBleedingEye],
 } as const;
+
 export type IconName = keyof typeof icons;
+
 export function IconButton({
   icon,
   label,
@@ -60,6 +63,7 @@ export function IconButton({
   attention?: boolean;
 }) {
   const [hover, setHover] = useState(false);
+
   const Icon = icons[icon][hover || active ? 1 : 0];
   const size =
     icon === 'notification'
@@ -67,6 +71,7 @@ export function IconButton({
       : ['info', 'warning', 'error', 'reportsPlay'].includes(icon)
         ? 18
         : 36;
+
   return (
     <button
       {...props}

@@ -1,4 +1,5 @@
 'use client';
+
 import Link from 'next/link';
 import { useCurrentReport } from '@/apps/reports/current-report';
 import { useDemoEvents } from './use-demo-events';
@@ -13,17 +14,20 @@ import { catalog, label } from '@/core/catalog';
 import notifications from '@/core/i18n/notifications.json';
 import ui from '@/components/ui/ui.module.css';
 import styles from './overview.module.css';
+
 const routes = [
   ['start', VscDebugStart],
   ['settings', VscSettingsGear],
   ['references', VscReferences],
   ['reports', VscReport],
 ] as const;
+
 export function Overview() {
   const t = useTranslation();
   const { locale } = usePreferences();
   const id = useCurrentReport();
   const feed = useDemoEvents();
+
   return (
     <>
       <div className={`${styles.map} ${feed.visible ? styles.visible : ''}`}>

@@ -1,7 +1,9 @@
 'use client';
+
 import { useState, type ReactNode } from 'react';
 import { IconButton, type IconName } from './icon-button';
 import styles from './notification.module.css';
+
 export function Notification({
   children,
   mode,
@@ -12,6 +14,7 @@ export function Notification({
   label: string;
 }) {
   const [open, setOpen] = useState(false);
+
   return (
     <div className={styles.root}>
       <IconButton

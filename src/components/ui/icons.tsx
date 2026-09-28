@@ -1,12 +1,17 @@
 import { createElement, type SVGProps, type ReactNode } from 'react';
 import artwork from '@/core/icons/legacy.json';
+
 type Node = { tag: string; attrs: Record<string, string | undefined>; children: Node[] };
+
 type IconProps = SVGProps<SVGSVGElement> & { size?: number | string };
+
 function renderNode(node: Node, key: number): ReactNode {
   return createElement(node.tag, { ...node.attrs, key }, node.children.map(renderNode));
 }
+
 function icon(name: keyof typeof artwork) {
   const definition = artwork[name];
+
   return function Icon({ size = '1em', ...props }: IconProps) {
     return (
       <svg
@@ -24,6 +29,7 @@ function icon(name: keyof typeof artwork) {
     );
   };
 }
+
 export const AiFillCloseCircle = icon('AiFillCloseCircle');
 export const AiFillInfoCircle = icon('AiFillInfoCircle');
 export const AiFillWarning = icon('AiFillWarning');

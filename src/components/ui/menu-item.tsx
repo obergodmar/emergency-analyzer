@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import styles from './ui.module.css';
+
 export function MenuItem({
   title,
   description,

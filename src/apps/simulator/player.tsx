@@ -1,4 +1,5 @@
 'use client';
+
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
@@ -18,13 +19,16 @@ import { SimulationMap } from './simulation-map';
 import { usePlayback } from './use-playback';
 import ui from '@/components/ui/ui.module.css';
 import styles from './player.module.css';
+
 function Playback({ report }: { report: SimulationReport }) {
   const { t: localize, locale } = usePreferences();
   const t = useTranslation();
   const playback = usePlayback();
   const [focusRequest, setFocusRequest] = useState(0);
+
   const state = timeline(report.result, playback.progress);
   const done = playback.progress === 1;
+
   return (
     <>
       <SimulationMap
@@ -126,21 +130,30 @@ function Playback({ report }: { report: SimulationReport }) {
     </>
   );
 }
+
 function ReportPlayer({ id }: { id: string | null }) {
   const { t } = usePreferences();
   const [report, setReport] = useState<SimulationReport | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+
   useEffect(() => {
     let active = true;
+
     async function load() {
       const cached = tabReports().find((r) => r.id === id);
+
       if (cached) return cached;
+
       if (!id) return null;
+
       const response = await fetch(`/api/simulations/${encodeURIComponent(id)}`);
+
       if (!response.ok) throw new Error();
+
       return (await response.json()).report as SimulationReport;
     }
+
     load()
       .then((value) => {
         if (active) setReport(value);
@@ -151,11 +164,13 @@ function ReportPlayer({ id }: { id: string | null }) {
       .finally(() => {
         if (active) setLoading(false);
       });
+
     return () => {
       active = false;
     };
   }, [id]);
   if (loading) return <Loading />;
+
   if (!report)
     return (
       <div className={styles.empty}>
@@ -176,10 +191,13 @@ function ReportPlayer({ id }: { id: string | null }) {
         </Link>
       </div>
     );
+
   return <Playback key={report.id} report={report} />;
 }
+
 export function Player() {
   const current = useCurrentReport();
   const id = useSearchParams().get('id') ?? current;
+
   return <ReportPlayer key={id} id={id} />;
 }

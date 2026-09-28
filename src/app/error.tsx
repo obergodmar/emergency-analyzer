@@ -1,9 +1,12 @@
 'use client';
+
 import { usePreferences } from '@/apps/shell/preferences';
 import { TopMenu } from '@/components/ui/top-menu';
 import ui from '@/components/ui/ui.module.css';
+
 export default function ErrorPage({ reset }: { reset: () => void }) {
   const { t } = usePreferences();
+
   return (
     <>
       <TopMenu>

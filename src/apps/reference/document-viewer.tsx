@@ -1,4 +1,5 @@
 'use client';
+
 import { useState } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
 import { usePreferences } from '@/apps/shell/preferences';
@@ -7,16 +8,19 @@ import { Loading } from '@/components/ui/loading';
 import styles from './reference.module.css';
 import 'react-pdf/dist/Page/TextLayer.css';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
+
 pdfjs.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
 const options = {
   cMapUrl: '/pdf-assets/cmaps/',
   standardFontDataUrl: '/pdf-assets/standard_fonts/',
   wasmUrl: '/pdf-assets/wasm/',
 };
+
 export default function DocumentViewer() {
   const { locale, t } = usePreferences();
   const { width } = useWindowSize();
   const [pages, setPages] = useState(0);
+
   return (
     <div className={styles.scroll}>
       <div className={styles.column}>

@@ -1,15 +1,19 @@
 'use client';
+
 import { plural } from '@/utils/plural';
 import { useDraft } from './draft-provider';
 import { useTranslation } from '@/apps/shell/use-translation';
 import { usePreferences } from '@/apps/shell/preferences';
 import ui from '@/components/ui/ui.module.css';
 import styles from './settings.module.css';
+
 export function VirusConfig() {
   const { draft, setDraft } = useDraft();
   const t = useTranslation();
   const { locale } = usePreferences();
+
   const days = plural(draft.incubation, locale, ['день', 'дня', 'дней'], ['day', 'days']);
+
   return (
     <>
       <input

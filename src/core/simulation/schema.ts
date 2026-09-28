@@ -11,6 +11,7 @@ const building = z
     capacity: z.number().int().min(0).max(1000000),
   })
   .strict();
+
 export const inputSchema = z
   .object({
     type: z.number().int().min(1).max(6),
@@ -59,6 +60,7 @@ export const inputSchema = z
     const check = (valid: boolean, path: string, message: string) => {
       if (!valid) ctx.addIssue({ code: 'custom', path: [path], message });
     };
+
     check(
       catalog.countries.some((c) => c.id === value.countryId),
       'countryId',
@@ -76,6 +78,7 @@ export const inputSchema = z
         'bombId',
         'Unknown bomb',
       );
+
     if (value.type === 5) {
       check(
         catalog.spaceobject.some((s) => s.id === value.spaceObjectId),
@@ -88,10 +91,12 @@ export const inputSchema = z
         'Unknown material',
       );
     }
+
     if (value.type === 2) {
       check(Boolean(value.virus), 'virus', 'Virus settings required');
       if (value.virus) {
         const virus = value.virus;
+
         check(
           catalog.classvirus.some((c) => c.id === virus.classId),
           'virus',
@@ -107,11 +112,13 @@ export const inputSchema = z
         );
       }
     }
+
     if (value.type === 6) check(Boolean(value.chemical), 'chemical', 'Chemical settings required');
   });
 
 export type SimulationInput = z.infer<typeof inputSchema>;
 export type Building = z.infer<typeof building>;
+
 export const defaultInput: SimulationInput = {
   type: 4,
   strength: 2,

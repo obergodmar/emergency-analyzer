@@ -1,4 +1,5 @@
 import { defaultInput, type SimulationInput } from '@/core/simulation/schema';
+
 export type Draft = {
   type: number | null;
   feature: number | null;
@@ -14,6 +15,7 @@ export type Draft = {
   contagiousness: number;
   symptoms: number[];
 };
+
 export const emptyDraft: Draft = {
   type: null,
   feature: null,
@@ -29,6 +31,7 @@ export const emptyDraft: Draft = {
   contagiousness: 0.1,
   symptoms: [],
 };
+
 export function toSimulationInput(draft: Draft): SimulationInput {
   return {
     ...defaultInput,

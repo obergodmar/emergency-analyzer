@@ -1,4 +1,5 @@
 'use client';
+
 import { geoMercator, geoPath } from 'd3-geo';
 import { useState } from 'react';
 import countries from '@/core/map/countries.json';
@@ -6,6 +7,7 @@ import { catalog, label } from '@/core/catalog';
 import { usePreferences } from '@/apps/shell/preferences';
 import { useWindowSize } from '@/utils/use-window-size';
 import styles from './world-map.module.css';
+
 const path = geoPath(geoMercator());
 const shapes = countries.features.map((f) => ({
   code: f.I.split('_')[0].toUpperCase(),
@@ -13,6 +15,7 @@ const shapes = countries.features.map((f) => ({
   name: f.N,
   path: path({ type: 'MultiPolygon', coordinates: f.C }) ?? '',
 }));
+
 export function WorldMap({
   selected,
   onSelect,
@@ -29,9 +32,11 @@ export function WorldMap({
   const { locale, t } = usePreferences();
   const { width, height } = useWindowSize();
   const [tip, setTip] = useState<{ x: number; y: number; text: string } | null>(null);
+
   const scale = (0.7 / 480) * (embedded ? 340 : width);
   const max = Math.max(...Object.values(values), 1);
   const min = Object.keys(values).length ? Math.min(...Object.values(values)) : 0;
+
   return (
     <div className={embedded ? styles.embedded : styles.world}>
       <svg
@@ -45,6 +50,7 @@ export function WorldMap({
         >
           {shapes.map((f) => {
             const country = catalog.countries.find((c) => c.code.toUpperCase() === f.code);
+
             return (
               <path
                 key={f.id}
@@ -58,7 +64,9 @@ export function WorldMap({
                 }
                 onMouseMove={(e) => {
                   if (!onSelect && !values[f.code]) return;
+
                   const bounds = e.currentTarget.ownerSVGElement!.getBoundingClientRect();
+
                   setTip({
                     x: e.clientX - bounds.left,
                     y: e.clientY - bounds.top - 25,

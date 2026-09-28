@@ -1,4 +1,5 @@
 'use client';
+
 import { setCurrentReport } from '@/apps/reports/current-report';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -28,6 +29,7 @@ import { VirusConfig } from './virus-config';
 import { SettingsDescriptions } from './settings-descriptions';
 import ui from '@/components/ui/ui.module.css';
 import styles from './settings.module.css';
+
 export function ScenarioForm() {
   const { draft: d, setDraft } = useDraft();
   const t = useTranslation();
@@ -35,6 +37,7 @@ export function ScenarioForm() {
   const router = useRouter();
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
+
   const patch = (p: Partial<typeof d>) => setDraft((v) => ({ ...v, ...p }));
   const regions = catalog.regions.filter((r) => r.country === d.country);
   const featureKey = d.type === 1 ? 'Atomic bomb' : d.type === 2 ? 'Virus' : 'Asteroid';
@@ -56,6 +59,7 @@ export function ScenarioForm() {
     d.country &&
     (!regions.length || d.region) &&
     featureReady;
+
   async function submit() {
     setBusy(true);
     setError('');
@@ -66,9 +70,13 @@ export function ScenarioForm() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(input),
       });
+
       if (!response.ok) throw new Error();
+
       const { report, persistent } = await response.json();
+
       if (!persistent) cacheReport(report);
+
       setCurrentReport(report.id);
       router.push(`/start?id=${report.id}`);
     } catch {
@@ -81,10 +89,12 @@ export function ScenarioForm() {
       setBusy(false);
     }
   }
+
   const props = (key: string) => ({
     title: t(`settings.disaster.${key}.value`),
     placeholder: t(`settings.disaster.${key}.description`),
   });
+
   return (
     <>
       {busy && <ProgressBar />}

@@ -1,4 +1,5 @@
 'use client';
+
 import { useEffect, useRef, useState } from 'react';
 import type { Map as MapboxMap, GeoJSONSource } from 'mapbox-gl';
 import { WorldMap } from '@/components/world-map';
@@ -21,6 +22,7 @@ const zoneFeature = (
     ],
   },
 });
+
 export function SimulationMap({
   result,
   progress,
@@ -37,17 +39,21 @@ export function SimulationMap({
   const [readyMap, setReadyMap] = useState<MapboxMap | null>(null);
   const localeRef = useRef(locale);
   const [failed, setFailed] = useState(false);
+
   const token = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
 
   useEffect(() => {
     if (!token || !container.current) return;
+
     let cancelled = false;
     let instance: MapboxMap | null = null;
+
     setReadyMap(null);
     setFailed(false);
     import('mapbox-gl')
       .then(({ default: mapbox }) => {
         if (cancelled) return;
+
         instance = new mapbox.Map({
           container: container.current!,
           accessToken: token,
@@ -60,12 +66,14 @@ export function SimulationMap({
         instance.on('error', () => setFailed(true));
         instance.on('load', () => {
           if (!instance || cancelled) return;
+
           setFailed(false);
           if (instance.getLayer('country-label'))
             instance.setLayoutProperty('country-label', 'text-field', [
               'get',
               `name_${localeRef.current}`,
             ]);
+
           [0, 1, 2].forEach((i) => {
             instance!.addSource(`zone-${i}`, {
               type: 'geojson',
@@ -82,6 +90,7 @@ export function SimulationMap({
         });
       })
       .catch(() => setFailed(true));
+
     return () => {
       cancelled = true;
       instance?.remove();
@@ -116,6 +125,7 @@ export function SimulationMap({
     if (map.current?.isStyleLoaded() && map.current.getLayer('country-label'))
       map.current.setLayoutProperty('country-label', 'text-field', ['get', `name_${locale}`]);
   }, [locale]);
+
   return (
     <div className="simulation-map">
       <div className="mapbox-container" ref={container} hidden={!token || failed} />

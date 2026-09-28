@@ -1,3 +1,9 @@
 onlyBuiltDependencies:
   - sharp
   - unrs-resolver
+
+# Oxlint runs the Stylistic plugin; the ESLint runner is not needed.
+autoInstallPeers: false
+peerDependencyRules:
+  ignoreMissing:
+    - eslint

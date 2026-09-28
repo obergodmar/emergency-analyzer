@@ -1,9 +1,11 @@
 'use client';
+
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 import { IconButton } from './icon-button';
 import { usePreferences } from '@/apps/shell/preferences';
 import styles from './modal.module.css';
+
 export function Modal({
   children,
   onClose,
@@ -21,22 +23,28 @@ export function Modal({
   const dialog = useRef<HTMLDialogElement>(null);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [closing, setClosing] = useState(false);
+
   const close = () => {
     if (timer.current) return;
+
     setClosing(true);
     timer.current = setTimeout(onClose, 250);
   };
+
   useEffect(() => {
     const element = dialog.current;
     const previous = document.activeElement as HTMLElement | null;
+
     element?.showModal();
     element?.focus();
+
     return () => {
       element?.close();
       previous?.focus();
       if (timer.current) clearTimeout(timer.current);
     };
   }, []);
+
   return createPortal(
     <dialog
       tabIndex={-1}

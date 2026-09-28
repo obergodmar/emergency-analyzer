@@ -6,14 +6,19 @@ export function chemicalModel(input: SimulationInput) {
   const c = input.chemical!;
   const { weight, windSpeed: wind, substanceId: substance, temperature } = c;
   let stability = 2;
+
   if (wind < 2) {
     if (c.daypart === 1 || c.daypart === 4) stability = c.atmospheric < 3 ? 1 : 2;
+
     if (c.daypart === 2) stability = c.atmospheric === 2 ? 1 : 2;
+
     if (c.daypart === 3) stability = c.atmospheric === 1 ? 3 : 2;
   } else if (wind <= 4) {
     if (c.daypart === 1) stability = c.atmospheric < 3 ? 1 : 2;
+
     if (c.daypart === 2 || c.daypart === 4) stability = c.atmospheric === 2 ? 1 : 2;
   }
+
   const period = Math.trunc(6 / input.duration);
   const floorIndex = (values: number[], value: number) =>
     Math.max(
@@ -85,5 +90,6 @@ export function chemicalModel(input: SimulationInput) {
     (weight * coefficient) / (4.173 / input.strength),
     (weight * coefficient) / (8.126 / input.strength),
   ];
+
   return { radii, period, victims, deaths };
 }

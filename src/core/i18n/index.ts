@@ -8,10 +8,13 @@ export function translate(
   values: Record<string, string | number> = {},
 ) {
   let value: unknown = locale === 'ru' ? ru : en;
+
   for (const part of key.split('.')) {
     if (typeof value !== 'object' || value === null) return key;
+
     value = (value as Record<string, unknown>)[part];
   }
+
   return typeof value === 'string'
     ? value.replace(/\{\{(.*?)\}\}/g, (_, name: string) => String(values[name] ?? ''))
     : key;

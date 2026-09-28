@@ -7,10 +7,12 @@ import { sessionOwner } from '@/server/session';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
+
 export async function GET() {
   try {
     const persistent = persistenceEnabled();
     const owner = persistent ? await sessionOwner() : null;
+
     return Response.json(
       { reports: owner ? await listReports(owner) : [], persistent },
       { headers: { 'Cache-Control': 'private, no-store' } },
@@ -19,6 +21,7 @@ export async function GET() {
     return failure(error);
   }
 }
+
 export async function POST(request: Request) {
   try {
     checkOrigin(request);
@@ -30,7 +33,9 @@ export async function POST(request: Request) {
       result: simulate(input),
     };
     const persistent = persistenceEnabled();
+
     if (persistent) await saveReport((await sessionOwner(true))!, report);
+
     return Response.json(
       { report, persistent },
       { status: 201, headers: { 'Cache-Control': 'private, no-store' } },

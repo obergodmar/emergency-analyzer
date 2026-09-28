@@ -16,6 +16,7 @@ export function simulate(raw: SimulationInput): SimulationResult {
     'scale' in location ? location.scale : density > 0 ? location.population / density : 0;
   const { radii, period, delay } = calculateRadii(input);
   const { deaths, victims } = calculateDamage(input, radii, regionArea, density);
+
   // Allocate each building's finite capacity once, to its containing zone.
   for (const building of input.buildings) {
     const distance = distanceKm(
@@ -25,26 +26,36 @@ export function simulate(raw: SimulationInput): SimulationResult {
       building.longitude,
     );
     const zone = radii.findIndex((radius) => distance <= radius);
+
     if (zone < 0 || (input.type !== 2 && distance < radii[0] * 0.1)) continue;
+
     const capacity = Math.min(
       building.capacity,
       lookup(catalog.buildingtype, building.type).capacity,
     );
+
     if (input.type === 2 && building.type !== 1) continue;
+
     const saved = Math.min(deaths[zone], Math.trunc(capacity * (building.type === 2 ? 1 : 0.5)));
+
     deaths[zone] -= saved;
     victims[zone] = Math.max(0, victims[zone] - Math.max(0, capacity - saved));
   }
+
   const crossesRegion = area(radii[2]) > regionArea;
   const limit = crossesRegion ? historicalWorld.population : location.population;
   const cap = (values: Triple): Triple => {
     let left = limit;
+
     return values.map((value) => {
       const n = Math.max(0, Math.min(left, Math.trunc(value)));
+
       left -= n;
+
       return n;
     }) as Triple;
   };
+
   const d = cap(deaths),
     v = cap(victims);
   const local = (values: Triple) =>
@@ -54,6 +65,7 @@ export function simulate(raw: SimulationInput): SimulationResult {
         values.reduce((sum, n, i) => {
           const outer = area(radii[i]),
             inner = i ? area(radii[i - 1]) : 0;
+
           return (
             sum +
             n *
@@ -65,6 +77,7 @@ export function simulate(raw: SimulationInput): SimulationResult {
         }, 0),
       ),
     );
+
   return {
     zones: radii.map((radiusKm, i) => ({
       radiusKm,
