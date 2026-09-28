@@ -13,6 +13,7 @@ assert builtins.length entries == builtins.length (builtins.attrNames scripts);
   packages = [
     pkgs.git
     pkgs.direnv
+    (lib.getBin pkgs.postgresql)
   ]
   ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [ pkgs.chromium ];
   env = {
